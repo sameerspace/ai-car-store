@@ -1,0 +1,30 @@
+<ul style="list-style: none; padding:20px;">
+
+    {% for car in cars %}
+    <li class="car-card">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 mt-3">
+                    <div class="card">
+                        <div class="card-horizontal">
+                            <div class="img-square-wrapper">
+                                <img class="" src="{{ car.images.0.image.url }}" width="300" height="180"
+                                    alt="Card image cap">
+                            </div>
+                            <div class="card-body">
+                                <h4 class="card-title"><a href="">{{ car.vehicle.name }}</a></h4>
+                                <p class="card-text">{{ car.vehicle.price }}PKR</p>
+                                <p class="card-text"><i>{{ car.vehicle.description }}</i></p>
+                                <p>Mileage : {{car.vehicle.mileage_km}}Km</p>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Condition : {{ car.vehicle.condition }}/10.0</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    {% endfor %}
+</ul>

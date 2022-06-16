@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<style>
+    body {
+        background-color: rgb(207, 43, 228);
+        font-family: 'Montserrat', sans-serif;
+
+    }
+
+    p {
+        font-size: small;
+        padding-left: 40%;
+
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    h2 {
+
+        text-align: center;
+
+    }
+
+    a {
+        text-decoration: none;
+
+    }
+
+    .background-form {
+        width: 350px;
+        border-radius: 3%;
+        height: 550px;
+        position: relative;
+        margin: 5%auto;
+        background-color: white;
+        padding: 4px;
+    }
+
+    .inputs {
+        /* for setting the position of the input */
+        top: 100px;
+        position: absolute;
+        width: 280px;
+
+
+    }
+
+    .input_field {
+        width: 100%;
+        padding: 15px;
+        margin: 5px;
+        border-left: 0;
+        border-right: 0;
+        border-top: 0;
+        border-bottom: 1px solid grey;
+
+    }
+
+    .submit_btn {
+        width: 85%;
+        padding: 10px 30px;
+        cursor: pointer;
+        display: block;
+        /* for setting the submit box position*/
+        margin-left: 17%;
+        background-color: bisque;
+        border: 0;
+        border-radius: 30px;
+
+    }
+</style>
+
+<body>
+    <h1>Welcome to Pak Wheels</h1>
+    <div class="background-form">
+        <h2>Registeration Form</h2>
+        <form class="inputs" id="register" action="{% url 'my_app-register' %}" method="post">
+            {% csrf_token %}
+            <input type="text" class="input_field" placeholder="Name" required name="fname">
+            <input type="email" class="input_field" placeholder="Email" required name="email">
+            <input type="password" class="input_field" placeholder="Password"
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{5,}"
+                title="Must contain at least one number and one uppercase and one lowercase letter, and at least 5 or more characters"
+                required name="password">
+            <input type="tel" class="input_field" placeholder="Phone Number" minlength="11" required name="phonenumber">
+            <input type="text" class="input_field" placeholder="Address" required name="address">
+            <br><br><br>
+            <button type="submit" class="submit_btn">Register</button> <br>
+
+            <a href={% url 'my_app-login' %}>
+                <p style="color: black;">I have an account</p>
+            </a>
+        </form>
+    </div>
+</body>
+
+</html>

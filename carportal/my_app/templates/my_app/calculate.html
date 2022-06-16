@@ -1,0 +1,104 @@
+{% extends 'my_app/home.html' %}
+
+
+{% block mycss %}
+<style>
+    @media (min-width: 1025px) {
+        .h-custom {
+            height: 100vh !important;
+        }
+    }
+
+    .buttonstyle {
+        background-color: rgba(147, 190, 255, 0.868);
+    }
+
+    .buttonstyle:hover {
+        background-color: rgba(97, 158, 249, 0.868);
+    }
+</style>
+{% endblock %}
+
+
+{% block content %}
+<section class="h-100 h-custom" style="background-color: rgb(0, 40, 75);">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-lg-8 col-xl-6">
+                <div class="card rounded-3">
+                    <img src="carportal\static\artificial-intelligence-in-cars.jpg" class="w-100"
+                        style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;" alt="Sample photo">
+                    <div class="card-body p-4 p-md-5">
+                        <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Calculate Price</h3>
+
+                        <form class="px-md-2">
+
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="form3Example1q">Enter Year: </label>
+                                <input type="text" id="form3Example1q" class="form-control" placeholder="e.g 2001" />
+                            </div>
+
+                            <div class="form-outline mb-4">
+                                <label class="form-label" for="form3Example1q">Enter Condition: </label>
+                                <input type="text" id="form3Example1q" class="form-control" placeholder="1 to 10"
+                                    min="1" max="10" />
+                            </div>
+
+                            <div class="row">
+                                <label class="form-label" for="form3Example1q">Select a City: </label>
+                                <div class="col-md-6 mb-4">
+                                    <select class="Select" style="width: 430px; height: 40px ;">
+                                        <option value="1" disabled>City</option>
+                                        <option value="2">Lahore</option>
+                                        <option value="3">Karachi</option>
+                                        <option value="4">Islamabad</option>
+                                        <option value="4">Peshawar</option>
+                                    </select>
+                                </div>
+                                <div class="form-outline mb-4">
+                                    <label class="form-label" for="form3Example1q">Enter Mileage: </label>
+                                    <input type="text" id="form3Example1q" class="form-control"
+                                        placeholder="200,000 km" />
+                                </div>
+                            </div>
+                            <!--For the City-->
+
+                            <div class="mb-4">
+                                <label class="form-label" for="form3Example1q">Select a Manfacturer: </label>
+                                <select class="Select Manfacturer" style="width: 430px; height: 40px ;">
+                                    <option value="1">Toyota</option>
+                                    <option value="2">Suzuki</option>
+                                    <option value="3">Honda</option>
+                                </select>
+
+                            </div>
+
+                            <!-- <div class="form-outline mb-4">
+                    <label class="form-label" for="form3Example1q">Enter Condition: </label>
+                    <br>
+                    <input type="range" class="form-range" min="1" max="10" id="customRange2">
+                </div>-->
+
+
+
+
+                            <hr>
+                            <div class="row mb-4 pb-2 pb-md-0 mb-md-5">
+                                <button type="submit" class="btn btn-primary btn-lg mb-1">Calculate Price</button>
+                                <input type="text" id="form3Example1w" class="form-control"
+                                    style"pointer-events:none;" />
+
+                            </div>
+                        </form>
+
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% endblock %}

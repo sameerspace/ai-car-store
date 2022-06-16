@@ -1,0 +1,70 @@
+{% extends 'my_app/home.html' %}
+
+{% block mycss %}
+<style>
+    .card-horizontal {
+        display: flex;
+        flex: 1 1 auto;
+    }
+
+    .car-card {
+        padding: 20px;
+    }
+
+    #carlist {
+        list-style: none;
+
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<form action="{% url 'view-all' %}" class="vform" style="padding: 50px;" method="post">
+    {% csrf_token %}
+    <div class="row justify-content-evenly">
+        <div class="col-md-6">
+            <input type="text" class="form-control form-control-lg" placeholder="Search.." name="search" required>
+        </div>
+        <!-- <div class="col-md-2">
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Manufacturer</option>
+                <option value="1">Honda</option>
+                <option value="2">Toyota</option>
+                <option value="3">Suzuki</option>
+                <option value="3">Kia</option>
+            </select>
+        </div> -->
+        <div class="col-md-2" style="padding: 0px;">
+            <select class="form-select" aria-label="Default select example" name="city">
+                <option selected>City</option>
+                <option value="1">Karachi</option>
+                <option value="2">Lahore</option>
+                <option value="3">Islamabad</option>
+                <option value="3">Peshawar</option>
+                <option value="3">Multan</option>
+
+            </select>
+        </div>
+        <!-- <div class="col-md-2">
+            <select class="form-select" aria-label="Default select example">
+                <option selected>Price Range</option>
+                <option value="1">5Lac-10Lac</option>
+                <option value="2">10Lac-20Lac</option>
+                <option value="3">20Lac-40Lac</option>
+            </select>
+        </div> -->
+        <div class="col-md-1">
+            <button type="submit" class="btn btn-primary btn">Search</button>
+        </div>
+    </div>
+</form>
+
+
+{% include 'my_app/car_card.html'%}
+
+
+
+
+
+{% endblock %}
