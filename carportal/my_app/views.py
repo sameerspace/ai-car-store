@@ -1,5 +1,6 @@
 
 
+from venv import create
 from django.shortcuts import render
 from django.contrib.auth import authenticate, logout, login
 from django.contrib.auth.models import User
@@ -8,36 +9,39 @@ from .models import UserDetails, Vehicle, VehicleImage
 
 
 # Create your views here.
-
-
-@login_required
-def index(request):
+def create_context(vehicles):
     ctx = {
         'cars': [],
     }
-    for vehicle in Vehicle.objects.all():
-        item = {
-            'vehicle': vehicle,
-            'images': [img.image.url for img in VehicleImage.objects.filter(car=vehicle)]
-        }
-        ctx['cars'].append(item)
-    return render(request, 'my_app/index.html', ctx)
-
-
-def view_all(request):
-    if request.POST:
-        searchtext = request.POST.get('search')
-        if(request.POST.get('city') != 'City'):
-            pass
-    ctx = {
-        'cars': [],
-    }
-    for vehicle in Vehicle.objects.all():
+    for vehicle in vehicles:
         item = {
             'vehicle': vehicle,
             'images': [img for img in VehicleImage.objects.filter(car=vehicle)]
         }
         ctx['cars'].append(item)
+    return ctx
+
+
+def search_cars(request):
+
+    if request.POST.get('city') != 'City':
+        return Vehicle.objects.filter(city__contains=request.POST.get('city'), name__contains=request.POST.get('search'))
+    return Vehicle.objects.filter(name__contains=request.POST.get('search'))
+
+
+@login_required
+def index(request):
+    ctx = create_context(Vehicle.objects.all())
+    return render(request, 'my_app/index.html', ctx)
+
+
+def view_all(request):
+    vehicles = Vehicle.objects.all()
+    if request.POST:
+        vehicles = search_cars(request)
+        print(vehicles)
+
+    ctx = create_context(vehicles)
     return render(request, 'my_app/view_all.html', ctx)
 
 

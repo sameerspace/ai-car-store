@@ -13,6 +13,7 @@ class Vehicle(models.Model):
     displacement_cc = models.IntegerField()
     condition = models.DecimalField(max_digits=2, decimal_places=1)
     description = models.TextField()
+    city = models.CharField(max_length=100)
 
     def __str__(self):
         return f"{self.name}, {self.manufacturer}  {self.modelDate}"
